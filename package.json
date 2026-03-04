@@ -1,17 +1,74 @@
 {
   "name": "animated-digit-transitions",
   "version": "0.1.0",
-  "private": true,
+  "description": "Beautiful animated digit transition components for React. Particle scatter, thread unravel, ink bloom, and flip dot effects powered by Framer Motion.",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./particle-scatter": {
+      "types": "./dist/particle-scatter.d.ts",
+      "import": "./dist/particle-scatter.js",
+      "require": "./dist/particle-scatter.cjs"
+    },
+    "./thread-unravel": {
+      "types": "./dist/thread-unravel.d.ts",
+      "import": "./dist/thread-unravel.js",
+      "require": "./dist/thread-unravel.cjs"
+    },
+    "./ink-bloom": {
+      "types": "./dist/ink-bloom.d.ts",
+      "import": "./dist/ink-bloom.js",
+      "require": "./dist/ink-bloom.cjs"
+    },
+    "./flip-dot": {
+      "types": "./dist/flip-dot.d.ts",
+      "import": "./dist/flip-dot.js",
+      "require": "./dist/flip-dot.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/venkataramanab/animated-digit-transitions"
+  },
+  "keywords": [
+    "react",
+    "animation",
+    "digit",
+    "transition",
+    "framer-motion",
+    "svg",
+    "component"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:lib": "tsup",
     "start": "next start",
     "lint": "eslint"
   },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "framer-motion": ">=10"
+  },
   "dependencies": {
+    "framer-motion": "^12.34.5",
+    "lucide-react": "^0.576.0",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "shiki": "^4.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -21,6 +78,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
+    "tsup": "^8.5.1",
     "typescript": "^5"
   }
 }

@@ -1,0 +1,15 @@
+src/app/
+src/components/
+.next/
+node_modules/
+.git/
+.gitignore
+.eslintrc*
+eslint.config*
+next.config.*
+next-env.d.ts
+postcss.config.*
+tsconfig.json
+tsup.config.ts
+public/
+*.md
