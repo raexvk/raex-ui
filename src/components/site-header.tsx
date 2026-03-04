@@ -33,7 +33,7 @@ export function SiteHeader() {
         <nav className="flex items-center gap-8">
           <Link
             href="/#components"
-            className="font-mono text-xs text-muted hover:text-foreground transition-colors"
+            className="font-mono text-xs uppercase text-muted hover:text-foreground transition-colors"
           >
             Components
           </Link>
@@ -41,7 +41,7 @@ export function SiteHeader() {
             href="https://github.com/raexvk"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-xs text-muted hover:text-foreground transition-colors"
+            className="font-mono text-xs uppercase text-muted hover:text-foreground transition-colors"
           >
             GitHub
           </a>
