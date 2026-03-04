@@ -33,7 +33,7 @@ export default function Home() {
           className="text-center mb-16"
         >
           <motion.div custom={0} variants={fadeUp} className="flex items-center justify-center mb-6">
-            <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted border border-border px-4 py-1">
+            <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted border border-border px-3 py-1.5">
               React Component Library
             </span>
           </motion.div>
