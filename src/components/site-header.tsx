@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Package } from "lucide-react";
+import { COMPONENTS } from "@/lib/registry";
 
 export function SiteHeader() {
   return (
@@ -10,7 +11,7 @@ export function SiteHeader() {
           <span className="font-mono text-sm">animated-digit-transitions</span>
         </Link>
         <nav className="flex items-center gap-6 text-sm text-muted">
-          <Link href="/components/particle-scatter" className="hover:text-foreground transition-colors">
+          <Link href={`/components/${COMPONENTS[0].slug}`} className="hover:text-foreground transition-colors">
             Components
           </Link>
           <a

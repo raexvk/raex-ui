@@ -12,7 +12,7 @@ interface ComponentPageProps {
   accentColor: string;
   fileName: string;
   component: React.ComponentType<{ value: number; size: number }>;
-  variant: "particle-scatter" | "thread-unravel" | "ink-bloom" | "flip-dot";
+  variant: string;
 }
 
 export async function ComponentPage({

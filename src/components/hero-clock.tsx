@@ -2,18 +2,10 @@
 
 import { useState } from "react";
 import { ClockDemo } from "./clock-demo";
-
-type Variant = "particle-scatter" | "thread-unravel" | "ink-bloom" | "flip-dot";
-
-const VARIANTS: { variant: Variant; label: string; color: string }[] = [
-  { variant: "particle-scatter", label: "Particle Scatter", color: "#a3e635" },
-  { variant: "thread-unravel", label: "Thread Unravel", color: "#38bdf8" },
-  { variant: "ink-bloom", label: "Ink Bloom", color: "#c084fc" },
-  { variant: "flip-dot", label: "Flip Dot", color: "#fbbf24" },
-];
+import { COMPONENTS } from "@/lib/registry";
 
 export function HeroClock() {
-  const [activeVariant, setActiveVariant] = useState<Variant>("particle-scatter");
+  const [activeVariant, setActiveVariant] = useState(COMPONENTS[0].slug);
 
   return (
     <div className="flex flex-col items-center gap-8">
@@ -21,18 +13,18 @@ export function HeroClock() {
         <ClockDemo variant={activeVariant} size={52} />
       </div>
       <div className="flex gap-2">
-        {VARIANTS.map(({ variant, label, color }) => (
+        {COMPONENTS.map(({ slug, label, accentColor }) => (
           <button
-            key={variant}
-            onClick={() => setActiveVariant(variant)}
+            key={slug}
+            onClick={() => setActiveVariant(slug)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
-              activeVariant === variant
+              activeVariant === slug
                 ? "border-white/20 text-white"
                 : "border-transparent text-muted hover:text-foreground"
             }`}
             style={
-              activeVariant === variant
-                ? { backgroundColor: color + "20", borderColor: color + "40" }
+              activeVariant === slug
+                ? { backgroundColor: accentColor + "20", borderColor: accentColor + "40" }
                 : undefined
             }
           >

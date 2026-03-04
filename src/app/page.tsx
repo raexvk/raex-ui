@@ -1,6 +1,7 @@
 import { HeroClock } from "@/components/hero-clock";
 import { LandingCards } from "@/components/landing-cards";
 import { CopyButton } from "@/components/copy-button";
+import { COMPONENTS } from "@/lib/registry";
 
 export default function Home() {
   const installCommand = "npm install animated-digit-transitions";
@@ -13,7 +14,7 @@ export default function Home() {
           Animated Digit Transitions
         </h1>
         <p className="text-muted text-lg mb-10 max-w-xl mx-auto">
-          4 beautiful animated digit components for React, powered by Framer
+          {COMPONENTS.length} beautiful animated digit components for React, powered by Framer
           Motion. Zero dependencies on Tailwind CSS.
         </p>
         <HeroClock />

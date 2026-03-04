@@ -1,19 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ParticleScatter } from "@/lib/digit-transitions/particle-scatter";
-import { ThreadUnravel } from "@/lib/digit-transitions/thread-unravel";
-import { InkBloom } from "@/lib/digit-transitions/ink-bloom";
-import { FlipDot } from "@/lib/digit-transitions/flip-dot";
-
-type Variant = "particle-scatter" | "thread-unravel" | "ink-bloom" | "flip-dot";
-
-const COMPONENTS: Record<Variant, React.ComponentType<{ value: number; size: number }>> = {
-  "particle-scatter": ParticleScatter,
-  "thread-unravel": ThreadUnravel,
-  "ink-bloom": InkBloom,
-  "flip-dot": FlipDot,
-};
+import { COMPONENT_MAP } from "@/lib/registry";
 
 function Colon({ size }: { size: number }) {
   const dotSize = Math.max(size * 0.1, 3);
@@ -53,7 +41,7 @@ export function ClockDemo({
   variant,
   size = 48,
 }: {
-  variant: Variant;
+  variant: string;
   size?: number;
 }) {
   const [time, setTime] = useState(() => new Date());
@@ -67,7 +55,7 @@ export function ClockDemo({
   const minutes = time.getMinutes().toString().padStart(2, "0");
   const seconds = time.getSeconds().toString().padStart(2, "0");
 
-  const Component = COMPONENTS[variant];
+  const Component = COMPONENT_MAP[variant];
 
   const digits = [
     parseInt(hours[0]),
