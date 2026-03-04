@@ -11,17 +11,17 @@ export function SiteHeader() {
         >
           <Image
             src="/logo.png"
-            alt="raex UI"
-            width={80}
-            height={24}
-            className="h-5 w-auto"
+            alt="Raex"
+            width={120}
+            height={48}
+            className="h-6 w-auto"
             priority
           />
         </Link>
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-8">
           <Link
             href="/#components"
-            className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted hover:text-foreground transition-colors"
+            className="text-sm text-muted hover:text-foreground transition-colors"
           >
             Components
           </Link>
@@ -29,7 +29,7 @@ export function SiteHeader() {
             href="https://github.com/raexvk"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted hover:text-foreground transition-colors"
+            className="text-sm text-muted hover:text-foreground transition-colors"
           >
             GitHub
           </a>
