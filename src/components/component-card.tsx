@@ -2,15 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Crosshair } from "./grid-decoration";
-import { Badge } from "./badge";
 
 interface ComponentCardProps {
   slug: string;
   displayName: string;
   description: string;
-  accentColor: string;
   category: string;
   component: React.ComponentType<{ value: number; size: number }>;
 }
@@ -19,7 +15,6 @@ export function ComponentCard({
   slug,
   displayName,
   description,
-  accentColor,
   category,
   component: Component,
 }: ComponentCardProps) {
@@ -35,45 +30,34 @@ export function ComponentCard({
   return (
     <Link
       href={`/components/${slug}`}
-      className="group block rounded-xl border border-border bg-card hover:border-white/20 transition-all duration-200 hover:scale-[1.01] overflow-hidden"
+      className="group block border border-[var(--color-line)] bg-[var(--color-bg)] hover:bg-[var(--color-bg-hover)] transition-colors duration-200 relative"
     >
+      {/* Plus corners */}
+      <span className="plus absolute top-2 left-2.5 group-hover:text-[var(--color-accent)]">+</span>
+      <span className="plus absolute top-2 right-2.5 group-hover:text-[var(--color-accent)]">+</span>
+      <span className="plus absolute bottom-2 left-2.5 group-hover:text-[var(--color-accent)]">+</span>
+      <span className="plus absolute bottom-2 right-2.5 group-hover:text-[var(--color-accent)]">+</span>
+
       {/* Preview area */}
-      <div className="relative h-[280px] bg-background flex items-center justify-center">
+      <div className="h-[280px] flex items-center justify-center">
         <Component value={value} size={80} />
-        {/* Crosshair decorations */}
-        <div className="absolute top-3 left-3">
-          <Crosshair />
-        </div>
-        <div className="absolute top-3 right-3">
-          <Crosshair />
-        </div>
-        <div className="absolute bottom-3 left-3">
-          <Crosshair />
-        </div>
-        <div className="absolute bottom-3 right-3">
-          <Crosshair />
-        </div>
       </div>
 
+      {/* Dotted separator */}
+      <div className="rule-dotted mx-4" />
+
       {/* Content */}
-      <div className="p-5 border-t border-border">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="text-lg font-medium text-foreground group-hover:text-white transition-colors">
-              {displayName}
-            </h3>
-            <p className="text-sm text-muted mt-1 leading-relaxed">
-              {description}
-            </p>
-          </div>
-          <ArrowUpRight className="w-4 h-4 text-muted group-hover:text-foreground transition-colors mt-1 shrink-0" />
-        </div>
-        <div className="flex items-center gap-2 mt-3">
-          <span
-            className="w-1.5 h-1.5 rounded-full shrink-0"
-            style={{ backgroundColor: accentColor }}
-          />
-          <Badge>{category}</Badge>
+      <div className="p-5">
+        <h3 className="text-[var(--text-lg)] font-normal text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors duration-200">
+          {displayName}
+        </h3>
+        <p className="text-sm text-[var(--color-text-secondary)] mt-1 leading-relaxed lowercase">
+          {description}
+        </p>
+        <div className="flex items-center gap-3 mt-3">
+          <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">
+            [ {category} ]
+          </span>
         </div>
       </div>
     </Link>

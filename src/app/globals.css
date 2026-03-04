@@ -1,55 +1,142 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --muted: #71717a;
-  --border: #27272a;
-  --card: #18181b;
-  --accent: #f97316;
+  --color-bg: #0a0a0a;
+  --color-bg-subtle: #111111;
+  --color-bg-hover: #161616;
+
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #888888;
+  --color-text-muted: #333333;
+  --color-text-disabled: #2a2a2a;
+
+  --color-accent: #3ecf6e;
+  --color-accent-dim: #1a5c38;
+  --color-accent-glow: rgba(62, 207, 110, 0.08);
+
+  --color-line: #1e1e1e;
+  --color-line-strong: #2a2a2a;
+  --color-dot: #222222;
+
+  /* per-component accents kept */
   --accent-lime: #a3e635;
   --accent-sky: #38bdf8;
   --accent-violet: #c084fc;
   --accent-amber: #fbbf24;
+
+  /* typography scale */
+  --text-hero: clamp(3.5rem, 8vw, 7rem);
+  --text-xl: clamp(2rem, 4vw, 3.5rem);
+  --text-lg: 1.5rem;
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+  --text-xxs: 0.65rem;
+
+  /* spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 10rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-card: var(--card);
-  --color-accent: var(--accent);
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text-primary);
+  --color-muted: var(--color-text-secondary);
+  --color-border: var(--color-line);
+  --color-card: var(--color-bg-subtle);
+  --color-accent: var(--color-accent);
   --font-sans: var(--font-satoshi), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-bg);
+  color: var(--color-text-primary);
   font-family: var(--font-sans);
 }
 
-/* Mono label utility */
-.mono-label {
+/* ---- STRUCTURAL LANGUAGE ---- */
+
+/* Ruled lines */
+.rule {
+  width: 100%;
+  height: 1px;
+  background: var(--color-line);
+}
+
+.rule--strong {
+  background: var(--color-line-strong);
+}
+
+/* Dotted lines */
+.rule-dotted {
+  width: 100%;
+  height: 1px;
+  border-top: 1px dashed var(--color-dot);
+}
+
+/* Plus symbol */
+.plus {
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
+  font-size: var(--text-xxs);
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Bracket label */
+.bracket-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted);
+}
+
+.bracket-label--accent {
+  color: var(--color-accent);
+}
+
+/* Mono label */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Mono counter */
+.mono-counter {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Mono tag */
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
 }
 
 /* Terminal prompt */
 .terminal-prompt::before {
   content: "$ ";
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-family: var(--font-mono);
 }
 
-/* Dotted line divider */
-.dotted-line {
-  border-top: 1px dotted var(--border);
+/* Container */
+.container-main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 5rem);
 }
 
 /* Scrollbar styling */
@@ -63,20 +150,14 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
+  background: var(--color-line-strong);
+  border-radius: 0;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
-}
-
-/* Code block scrollbar */
 pre::-webkit-scrollbar {
   height: 4px;
 }
 
 pre::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 2px;
+  background: var(--color-line-strong);
 }

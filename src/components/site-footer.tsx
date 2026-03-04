@@ -3,30 +3,29 @@ import { COMPONENTS } from "@/lib/registry";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24">
-      <div className="dotted-line" />
-      <div className="max-w-[1200px] mx-auto px-6 py-12">
+    <footer className="mt-[var(--space-xl)]">
+      <div className="rule" />
+      <div className="container-main py-[var(--space-lg)]">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
-            <span className="font-mono text-sm font-medium text-foreground">
-              raex UI
+            <span className="font-mono text-xs tracking-wider text-[var(--color-text-muted)]">
+              [ raex ui ]
             </span>
-            <p className="text-sm text-muted mt-2 leading-relaxed">
-              A growing collection of beautifully crafted React components.
-              Animated, interactive, production-ready.
+            <p className="text-sm text-[var(--color-text-secondary)] mt-3 leading-relaxed">
+              Animated React components for interfaces that feel alive.
             </p>
           </div>
 
           {/* Component links */}
           <div>
-            <span className="mono-label mb-3 block">Components</span>
+            <span className="bracket-label block mb-3">[ Components ]</span>
             <ul className="space-y-2">
               {COMPONENTS.map((c) => (
                 <li key={c.slug}>
                   <Link
                     href={`/components/${c.slug}`}
-                    className="text-sm text-muted hover:text-foreground transition-colors"
+                    className="font-mono text-xs text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
                   >
                     {c.label}
                   </Link>
@@ -37,8 +36,8 @@ export function SiteFooter() {
 
           {/* Built with */}
           <div>
-            <span className="mono-label mb-3 block">Built with</span>
-            <ul className="space-y-2 text-sm text-muted">
+            <span className="bracket-label block mb-3">[ Built with ]</span>
+            <ul className="space-y-2 font-mono text-xs text-[var(--color-text-secondary)]">
               <li>React 19</li>
               <li>Framer Motion</li>
               <li>Next.js</li>
@@ -47,10 +46,14 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Copyright bar */}
-        <div className="dotted-line mt-10 pt-6 flex items-center justify-between">
-          <span className="mono-label">&copy; {new Date().getFullYear()} raex</span>
-          <span className="mono-label">MIT License</span>
+        <div className="rule mt-10 mb-6" />
+        <div className="flex items-center justify-between">
+          <span className="font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider">
+            &copy; {new Date().getFullYear()} raex
+          </span>
+          <span className="font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider">
+            MIT License
+          </span>
         </div>
       </div>
     </footer>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Check } from "lucide-react";
 
 export function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
@@ -15,14 +14,10 @@ export function CopyButton({ text }: { text: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="absolute top-3 right-3 p-2 rounded-md bg-white/5 hover:bg-white/10 transition-colors text-muted hover:text-foreground z-10"
+      className="absolute top-3 right-3 font-mono text-[var(--text-xxs)] uppercase tracking-wider text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors duration-150 z-10"
       aria-label="Copy code"
     >
-      {copied ? (
-        <Check className="w-4 h-4" />
-      ) : (
-        <Copy className="w-4 h-4" />
-      )}
+      {copied ? "[ copied ]" : "[ copy ]"}
     </button>
   );
 }

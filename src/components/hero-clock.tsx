@@ -8,43 +8,32 @@ export function HeroClock() {
   const [activeVariant, setActiveVariant] = useState(COMPONENTS[0].slug);
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      {/* Terminal frame */}
-      <div className="rounded-lg border border-border bg-card overflow-hidden w-full max-w-xl">
-        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border">
-          <span className="flex gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+    <div className="flex flex-col gap-6">
+      {/* Preview frame */}
+      <div className="border border-[var(--color-line)] bg-[var(--color-bg-subtle)]">
+        <div className="flex items-center px-4 py-2 border-b border-[var(--color-line)]">
+          <span className="font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider">
+            [ live preview ]
           </span>
-          <span className="mono-label ml-2">live preview</span>
         </div>
-        <div className="flex items-center justify-center py-8 px-4">
+        <div className="flex items-center justify-center py-10 px-4">
           <ClockDemo variant={activeVariant} size={40} />
         </div>
       </div>
 
       {/* Variant toggles */}
-      <div className="flex gap-2 flex-wrap justify-center">
-        {COMPONENTS.map(({ slug, label, accentColor }) => (
+      <div className="flex gap-4 flex-wrap">
+        {COMPONENTS.map(({ slug, label }) => (
           <button
             key={slug}
             onClick={() => setActiveVariant(slug)}
-            className={`px-3 py-1.5 rounded-full font-mono text-[10px] uppercase tracking-wider font-medium transition-all border ${
+            className={`font-mono text-[var(--text-xs)] uppercase tracking-wider transition-colors duration-150 ${
               activeVariant === slug
-                ? "border-white/20 text-white"
-                : "border-transparent text-muted hover:text-foreground"
+                ? "text-[var(--color-text-primary)]"
+                : "text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
             }`}
-            style={
-              activeVariant === slug
-                ? {
-                    backgroundColor: accentColor + "20",
-                    borderColor: accentColor + "40",
-                  }
-                : undefined
-            }
           >
-            {label}
+            {activeVariant === slug ? `[ ${label} ]` : label}
           </button>
         ))}
       </div>
