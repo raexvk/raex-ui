@@ -11,6 +11,9 @@ export interface ComponentMeta {
   longDescription: string;
   accentColor: string;
   fileName: string;
+  collection: string;
+  category: string;
+  tags: string[];
   component: React.ComponentType<{ value: number; size: number }>;
 }
 
@@ -24,6 +27,9 @@ export const COMPONENTS: ComponentMeta[] = [
       "Firefly dots scatter and reform into digits using spring physics. Each of the 35 dots (7x5 grid) animates independently with staggered delays.",
     accentColor: "#a3e635",
     fileName: "particle-scatter.tsx",
+    collection: "Digital Clock Animations",
+    category: "grid-based",
+    tags: ["grid", "particles", "spring-physics"],
     component: ParticleScatter,
   },
   {
@@ -35,6 +41,9 @@ export const COMPONENTS: ComponentMeta[] = [
       "A single continuous stroke path that unravels and restitches to form each digit. Uses SVG stroke-dashoffset animation for a hand-drawn effect.",
     accentColor: "#38bdf8",
     fileName: "thread-unravel.tsx",
+    collection: "Digital Clock Animations",
+    category: "path-based",
+    tags: ["svg", "stroke", "path-animation"],
     component: ThreadUnravel,
   },
   {
@@ -46,6 +55,9 @@ export const COMPONENTS: ComponentMeta[] = [
       "An ink-in-water dissolve effect where digits bloom in with blur and scale, creating an organic morphing transition between values.",
     accentColor: "#c084fc",
     fileName: "ink-bloom.tsx",
+    collection: "Digital Clock Animations",
+    category: "path-based",
+    tags: ["svg", "blur", "morphing"],
     component: InkBloom,
   },
   {
@@ -57,6 +69,9 @@ export const COMPONENTS: ComponentMeta[] = [
       "A cascading dot-flip grid that simulates a physical flip-dot display. Dots flip with spring physics in a diagonal cascade pattern.",
     accentColor: "#fbbf24",
     fileName: "flip-dot.tsx",
+    collection: "Digital Clock Animations",
+    category: "grid-based",
+    tags: ["grid", "3d-flip", "spring-physics"],
     component: FlipDot,
   },
 ];
@@ -72,4 +87,12 @@ export function getComponentBySlug(slug: string): ComponentMeta | undefined {
 
 export function getAllSlugs(): string[] {
   return COMPONENTS.map((c) => c.slug);
+}
+
+export function getCategories(): string[] {
+  return [...new Set(COMPONENTS.map((c) => c.category))];
+}
+
+export function getCollections(): string[] {
+  return [...new Set(COMPONENTS.map((c) => c.collection))];
 }

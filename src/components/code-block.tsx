@@ -7,7 +7,11 @@ interface CodeBlockProps {
   title?: string;
 }
 
-export async function CodeBlock({ code, lang = "tsx", title }: CodeBlockProps) {
+export async function CodeBlock({
+  code,
+  lang = "tsx",
+  title,
+}: CodeBlockProps) {
   const html = await codeToHtml(code.trim(), {
     lang,
     theme: "github-dark-default",
@@ -16,8 +20,13 @@ export async function CodeBlock({ code, lang = "tsx", title }: CodeBlockProps) {
   return (
     <div className="relative group rounded-lg border border-border overflow-hidden">
       {title && (
-        <div className="px-4 py-2 border-b border-border bg-card text-sm text-muted font-mono">
-          {title}
+        <div className="px-4 py-2 border-b border-border bg-card text-sm text-muted font-mono flex items-center gap-2">
+          <span className="flex gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+          </span>
+          <span className="ml-2">{title}</span>
         </div>
       )}
       <div className="relative">

@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { Geist_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const satoshi = localFont({
+  src: "../../public/fonts/Satoshi-Variable.woff2",
+  variable: "--font-satoshi",
+  display: "swap",
+  weight: "300 900",
 });
 
 const geistMono = Geist_Mono({
@@ -15,9 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Animated Digit Transitions",
+  title: "raex UI — React Component Library",
   description:
-    "Beautiful animated digit transition components for React. Particle scatter, thread unravel, ink bloom, and flip dot effects powered by Framer Motion.",
+    "A growing collection of beautifully crafted React components. Animated, interactive, and production-ready. Powered by Framer Motion.",
 };
 
 export default function RootLayout({
@@ -28,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${satoshi.variable} ${geistMono.variable} antialiased`}
       >
         <div className="min-h-screen flex flex-col">
           <SiteHeader />
