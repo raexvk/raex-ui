@@ -32,10 +32,10 @@ export default function Home() {
           animate="visible"
           className="text-center mb-16"
         >
-          <motion.div custom={0} variants={fadeUp} className="flex items-center justify-center gap-2 mb-6">
-            <Crosshair />
-            <span className="mono-label">React Component Library</span>
-            <Crosshair />
+          <motion.div custom={0} variants={fadeUp} className="flex items-center justify-center mb-6">
+            <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted border border-border px-4 py-2">
+              React Component Library
+            </span>
           </motion.div>
 
           <motion.h1

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function SiteHeader() {
   return (
@@ -6,25 +7,31 @@ export function SiteHeader() {
       <div className="max-w-[1200px] mx-auto px-6 h-14 flex items-center justify-between">
         <Link
           href="/"
-          className="font-mono text-sm font-medium text-foreground hover:opacity-80 transition-opacity tracking-tight"
+          className="hover:opacity-80 transition-opacity"
         >
-          raex UI
-          <span className="animate-pulse ml-0.5 text-accent">_</span>
+          <Image
+            src="/logo.png"
+            alt="raex UI"
+            width={80}
+            height={24}
+            className="h-5 w-auto"
+            priority
+          />
         </Link>
         <nav className="flex items-center gap-6">
           <Link
             href="/#components"
-            className="mono-label hover:text-foreground transition-colors"
+            className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted hover:text-foreground transition-colors"
           >
             Components
           </Link>
           <a
-            href="https://raexvk.framer.website/"
+            href="https://github.com/raexvk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mono-label hover:text-foreground transition-colors"
+            className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted hover:text-foreground transition-colors"
           >
-            Portfolio
+            GitHub
           </a>
         </nav>
       </div>
