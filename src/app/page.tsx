@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { HeroClock } from "@/components/hero-clock";
 import { LandingCards } from "@/components/landing-cards";
 import { CopyButton } from "@/components/copy-button";
@@ -56,7 +57,7 @@ const installCommand = "npm install animated-digit-transitions";
 export default function Home() {
   return (
     <div className="container-main">
-      {/* Hero */}
+      {/* ═══ HERO ═══ */}
       <section className="pt-[var(--space-2xl)] pb-[var(--space-xl)]">
         <Reveal>
           <span className="bracket-label">[ open source ]</span>
@@ -64,7 +65,7 @@ export default function Home() {
 
         <Reveal delay={200}>
           <h1
-            className="font-light tracking-[-0.03em] mt-6 mb-6"
+            className="font-light tracking-[-0.03em] mt-6 mb-8"
             style={{ fontSize: "var(--text-hero)" }}
           >
             raex UI
@@ -72,22 +73,35 @@ export default function Home() {
         </Reveal>
 
         <Reveal delay={400}>
-          <p
-            className="text-[var(--color-text-secondary)] max-w-xl leading-[1.7]"
-            style={{ fontSize: "var(--text-base)" }}
-          >
-            Animated React components for interfaces that feel alive. Zero external dependencies. Ships under 3kb each.
+          <p className="text-[var(--color-text-secondary)] max-w-xl leading-[1.7] text-lg mb-2">
+            Animated React components for interfaces that feel alive.
+            Zero external dependencies. Ships under 3kb each.
           </p>
         </Reveal>
 
-        <Reveal delay={500} className="mt-3">
+        <Reveal delay={500} className="mt-1 mb-10">
           <p className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">
             Framer Motion &middot; TypeScript &middot; MIT
           </p>
         </Reveal>
 
+        {/* Buttons — clear CTAs */}
+        <Reveal delay={600} className="flex items-center gap-4 mb-16">
+          <Link href="/#components" className="btn-primary">
+            Browse Components
+          </Link>
+          <a
+            href="https://github.com/raexvk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost"
+          >
+            GitHub
+          </a>
+        </Reveal>
+
         {/* Install command */}
-        <Reveal delay={600} className="mt-10 max-w-lg">
+        <Reveal delay={700} className="max-w-lg mb-16">
           <div className="relative border border-[var(--color-line-strong)] bg-[var(--color-bg-subtle)]">
             <CopyButton text={installCommand} />
             <pre className="p-[var(--space-md)] text-sm font-mono terminal-prompt">
@@ -97,25 +111,14 @@ export default function Home() {
         </Reveal>
 
         {/* Hero clock */}
-        <Reveal delay={800} className="mt-16 max-w-2xl">
+        <Reveal delay={800} className="max-w-2xl">
           <HeroClock />
-        </Reveal>
-
-        <Reveal delay={900} className="mt-8">
-          <a
-            href="https://raexvk.framer.website/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
-          >
-            built by raex
-          </a>
         </Reveal>
       </section>
 
       <div className="rule" />
 
-      {/* Components catalog */}
+      {/* ═══ COMPONENTS ═══ */}
       <section id="components" className="py-[var(--space-xl)]">
         <Reveal>
           <div className="flex items-baseline gap-3 mb-2">
@@ -126,7 +129,7 @@ export default function Home() {
 
         <Reveal delay={100}>
           <h2
-            className="font-normal mb-3"
+            className="font-normal mb-4"
             style={{ fontSize: "var(--text-xl)" }}
           >
             Digital Clock Animations
@@ -134,7 +137,7 @@ export default function Home() {
         </Reveal>
 
         <Reveal delay={200}>
-          <p className="text-[var(--color-text-secondary)] text-sm mb-10 max-w-lg">
+          <p className="text-[var(--color-text-secondary)] mb-10 max-w-lg leading-relaxed">
             The first collection. Four digit transition components, each with a distinct animation approach.
           </p>
         </Reveal>
@@ -146,7 +149,7 @@ export default function Home() {
 
       <div className="rule" />
 
-      {/* Stats */}
+      {/* ═══ STATS ═══ */}
       <section className="py-[var(--space-xl)]">
         <Reveal>
           <span className="bracket-label">[ At a glance ]</span>
@@ -169,12 +172,12 @@ export default function Home() {
                     {item.value}
                   </span>
                   {item.suffix && (
-                    <span className="font-mono text-[var(--text-xs)] text-[var(--color-accent)]">
+                    <span className="font-mono text-[var(--text-sm)] text-[var(--color-accent)]">
                       {item.suffix}
                     </span>
                   )}
                 </div>
-                <span className="font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider mt-1 block">
+                <span className="font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider mt-2 block">
                   {item.label}
                 </span>
               </div>
@@ -185,7 +188,7 @@ export default function Home() {
 
       <div className="rule" />
 
-      {/* CTA */}
+      {/* ═══ CTA ═══ */}
       <section className="py-[var(--space-xl)]">
         <Reveal>
           <span className="bracket-label">[ Install ]</span>
@@ -193,7 +196,7 @@ export default function Home() {
 
         <Reveal delay={100}>
           <h2
-            className="font-normal mt-6 mb-3"
+            className="font-normal mt-6 mb-4"
             style={{ fontSize: "var(--text-xl)" }}
           >
             Get started
@@ -201,18 +204,32 @@ export default function Home() {
         </Reveal>
 
         <Reveal delay={200}>
-          <p className="text-[var(--color-text-secondary)] text-sm mb-8 max-w-md">
+          <p className="text-[var(--color-text-secondary)] mb-8 max-w-md leading-relaxed">
             Install the package. Import any component. That&apos;s it.
           </p>
         </Reveal>
 
-        <Reveal delay={300} className="max-w-lg">
+        <Reveal delay={300} className="max-w-lg mb-10">
           <div className="relative border border-[var(--color-line-strong)] bg-[var(--color-bg-subtle)]">
             <CopyButton text={installCommand} />
             <pre className="p-[var(--space-md)] text-sm font-mono terminal-prompt">
               <code>{installCommand}</code>
             </pre>
           </div>
+        </Reveal>
+
+        <Reveal delay={400} className="flex items-center gap-4">
+          <Link href="/#components" className="btn-ghost">
+            View Components
+          </Link>
+          <a
+            href="https://github.com/raexvk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            Star on GitHub
+          </a>
         </Reveal>
       </section>
     </div>

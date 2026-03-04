@@ -198,22 +198,22 @@ export function MyComponent() {
       {/* Links */}
       <section>
         <span className="bracket-label block mb-[var(--space-md)]">[ Links ]</span>
-        <div className="flex flex-wrap gap-6">
+        <div className="flex flex-wrap gap-4">
           <a
             href="https://www.npmjs.com/package/animated-digit-transitions"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[var(--text-xs)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
+            className="btn-ghost"
           >
-            npm
+            npm Package
           </a>
           <a
             href={`https://github.com/venkataramanab/animated-digit-transitions/blob/main/src/lib/digit-transitions/${fileName}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[var(--text-xs)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
+            className="btn-ghost"
           >
-            source
+            View Source
           </a>
         </div>
       </section>

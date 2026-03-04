@@ -9,7 +9,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
-            <span className="font-mono text-xs tracking-wider text-[var(--color-text-muted)]">
+            <span className="font-mono text-sm tracking-wider text-[var(--color-text-secondary)]">
               [ raex ui ]
             </span>
             <p className="text-sm text-[var(--color-text-secondary)] mt-3 leading-relaxed">
@@ -19,8 +19,8 @@ export function SiteFooter() {
 
           {/* Component links */}
           <div>
-            <span className="bracket-label block mb-3">[ Components ]</span>
-            <ul className="space-y-2">
+            <span className="bracket-label block mb-4">[ Components ]</span>
+            <ul className="space-y-2.5">
               {COMPONENTS.map((c) => (
                 <li key={c.slug}>
                   <Link
@@ -36,8 +36,8 @@ export function SiteFooter() {
 
           {/* Built with */}
           <div>
-            <span className="bracket-label block mb-3">[ Built with ]</span>
-            <ul className="space-y-2 font-mono text-xs text-[var(--color-text-secondary)]">
+            <span className="bracket-label block mb-4">[ Built with ]</span>
+            <ul className="space-y-2.5 font-mono text-xs text-[var(--color-text-secondary)]">
               <li>React 19</li>
               <li>Framer Motion</li>
               <li>Next.js</li>

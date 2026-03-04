@@ -44,21 +44,19 @@ export function ComponentCard({
       </div>
 
       {/* Dotted separator */}
-      <div className="rule-dotted mx-4" />
+      <div className="rule-dotted mx-5" />
 
       {/* Content */}
-      <div className="p-5">
-        <h3 className="text-[var(--text-lg)] font-normal text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors duration-200">
+      <div className="px-5 py-5">
+        <h3 className="text-lg font-normal text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors duration-200 mb-1">
           {displayName}
         </h3>
-        <p className="text-sm text-[var(--color-text-secondary)] mt-1 leading-relaxed lowercase">
+        <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed lowercase mb-3">
           {description}
         </p>
-        <div className="flex items-center gap-3 mt-3">
-          <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">
-            [ {category} ]
-          </span>
-        </div>
+        <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">
+          [ {category} ]
+        </span>
       </div>
     </Link>
   );
