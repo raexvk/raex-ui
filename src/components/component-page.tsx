@@ -3,8 +3,8 @@ import path from "path";
 import Link from "next/link";
 import { CodeBlock } from "./code-block";
 import { DigitDemo } from "./digit-demo";
-import { ClockDemo } from "./clock-demo";
 import { CopyButton } from "./copy-button";
+import { COMPONENTS } from "@/lib/registry";
 
 interface ComponentPageProps {
   name: string;
@@ -25,7 +25,6 @@ export async function ComponentPage({
   fileName,
   category,
   component,
-  variant,
 }: ComponentPageProps) {
   const filePath = path.join(
     process.cwd(),
@@ -42,137 +41,112 @@ export function MyComponent() {
 }`;
 
   const installCommand = "npm install animated-digit-transitions";
-  const importPath = `animated-digit-transitions/${name}`;
+
+  // Find next component
+  const currentIndex = COMPONENTS.findIndex((c) => c.slug === name);
+  const nextComponent = COMPONENTS[(currentIndex + 1) % COMPONENTS.length];
 
   return (
     <div className="container-main py-[var(--space-lg)]">
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 mb-[var(--space-lg)]">
+      {/* 01 — HEADER */}
+      <nav className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)] mb-[var(--space-lg)]">
+        <Link
+          href="/"
+          className="hover:text-[var(--color-text-primary)] transition-colors duration-150"
+        >
+          [ raex ui ]
+        </Link>
+        {" / "}
         <Link
           href="/#components"
-          className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
+          className="hover:text-[var(--color-text-primary)] transition-colors duration-150"
         >
-          Components
+          components
         </Link>
-        <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">/</span>
-        <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-primary)]">
-          {displayName}
-        </span>
+        {" / "}
+        <span className="text-[var(--color-text-secondary)]">{name}</span>
       </nav>
 
-      {/* Header */}
-      <div className="mb-[var(--space-lg)]">
-        <div className="flex items-baseline gap-4 mb-3">
-          <h1 className="font-normal" style={{ fontSize: "var(--text-xl)" }}>
-            {displayName}
-          </h1>
-          <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">
-            [ {category} ]
-          </span>
-        </div>
-        <p className="text-[var(--color-text-secondary)] max-w-2xl leading-relaxed lowercase">
-          {description}
-        </p>
+      <h1 className="font-normal mb-3" style={{ fontSize: "var(--text-xl)" }}>
+        {displayName}
+      </h1>
+
+      <p className="text-[var(--color-text-secondary)] max-w-2xl leading-relaxed lowercase mb-4">
+        {description}
+      </p>
+
+      <div className="flex items-center gap-3 mb-2">
+        <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">
+          [ {category} ] &middot; v1.0.0 &middot; &lt;3kb &middot; zero deps
+        </span>
       </div>
 
+      <a
+        href={`https://github.com/venkataramanab/animated-digit-transitions/blob/main/src/lib/digit-transitions/${fileName}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-mono text-[var(--text-xs)] text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors duration-150 inline-block mb-[var(--space-md)]"
+      >
+        GitHub &#8599;
+      </a>
+
       <div className="rule mb-[var(--space-xl)]" />
 
-      {/* Live Demo */}
+      {/* 02 — LIVE PREVIEW */}
       <section className="mb-[var(--space-xl)]">
-        <span className="bracket-label block mb-[var(--space-md)]">[ Live Demo ]</span>
-        <DigitDemo component={component} size={100} />
-      </section>
-
-      <div className="rule mb-[var(--space-xl)]" />
-
-      {/* Clock Demo */}
-      <section className="mb-[var(--space-xl)]">
-        <span className="bracket-label block mb-[var(--space-md)]">[ Clock Demo ]</span>
-        <div className="border border-[var(--color-line)] bg-[var(--color-bg-subtle)]">
-          <div className="flex items-center px-4 py-2 border-b border-[var(--color-line)]">
-            <span className="font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider">
-              [ live preview ]
-            </span>
-          </div>
-          <div className="flex items-center justify-center p-10">
-            <ClockDemo variant={variant} size={44} />
-          </div>
+        <div className="bg-[var(--color-bg-subtle)] border border-[var(--color-line)] flex items-center justify-center py-20 px-8">
+          <DigitDemo component={component} size={120} />
         </div>
       </section>
 
       <div className="rule mb-[var(--space-xl)]" />
 
-      {/* Installation */}
+      {/* 03 — INSTALL */}
       <section className="mb-[var(--space-xl)]">
-        <span className="bracket-label block mb-[var(--space-md)]">[ Install ]</span>
-        <div className="space-y-4">
-          <div className="relative border border-[var(--color-line-strong)] bg-[var(--color-bg-subtle)]">
-            <CopyButton text={installCommand} />
-            <pre className="p-[var(--space-md)] text-sm font-mono terminal-prompt">
-              <code>{installCommand}</code>
-            </pre>
-          </div>
-
-          <div className="border border-[var(--color-line)] bg-[var(--color-bg-subtle)] p-[var(--space-md)]">
-            <span className="font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider block mb-2">
-              Individual import
-            </span>
-            <code className="text-sm font-mono text-[var(--color-text-secondary)]">
-              import {"{"} {displayName} {"}"} from &quot;{importPath}&quot;
-            </code>
-          </div>
-
-          <details className="group">
-            <summary className="cursor-pointer font-mono text-[var(--text-xs)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors duration-150 py-2">
-              Or copy the source directly
-            </summary>
-            <div className="mt-2">
-              <CodeBlock code={sourceCode} title={fileName} />
-            </div>
-          </details>
+        <span className="bracket-label block mb-[var(--space-md)]">[ INSTALL ]</span>
+        <div className="relative border border-[var(--color-line-strong)] bg-[var(--color-bg-subtle)]">
+          <CopyButton text={installCommand} />
+          <pre className="p-[var(--space-md)] text-sm font-mono terminal-prompt">
+            <code>{installCommand}</code>
+          </pre>
         </div>
       </section>
 
       <div className="rule mb-[var(--space-xl)]" />
 
-      {/* Usage */}
+      {/* 04 — USAGE */}
       <section className="mb-[var(--space-xl)]">
-        <span className="bracket-label block mb-[var(--space-md)]">[ Usage ]</span>
+        <span className="bracket-label block mb-[var(--space-md)]">[ USAGE ]</span>
         <CodeBlock code={usageCode} />
       </section>
 
       <div className="rule mb-[var(--space-xl)]" />
 
-      {/* Props */}
+      {/* 05 — PROPS */}
       <section className="mb-[var(--space-xl)]">
-        <span className="bracket-label block mb-[var(--space-md)]">[ Props ]</span>
-        <div className="border border-[var(--color-line)] overflow-hidden">
+        <span className="bracket-label block mb-[var(--space-md)]">[ PROPS ]</span>
+        <div className="border-t border-[var(--color-line)]">
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-[var(--color-bg-subtle)]">
-                <th className="text-left px-4 py-3 font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider">Prop</th>
-                <th className="text-left px-4 py-3 font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider">Type</th>
-                <th className="text-left px-4 py-3 font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider">Description</th>
+              <tr>
+                <th className="text-left px-0 py-3 font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider border-b border-[var(--color-line)]">Prop</th>
+                <th className="text-left px-4 py-3 font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider border-b border-[var(--color-line)]">Type</th>
+                <th className="text-left px-4 py-3 font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider border-b border-[var(--color-line)]">Default</th>
+                <th className="text-left px-4 py-3 font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider border-b border-[var(--color-line)]">Description</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-t border-[var(--color-line)]">
-                <td className="px-4 py-3 font-mono text-sm" style={{ color: accentColor }}>
-                  value
-                </td>
-                <td className="px-4 py-3 font-mono text-[var(--color-text-secondary)]">number</td>
-                <td className="px-4 py-3 text-[var(--color-text-secondary)]">
-                  Digit to display (0-9)
-                </td>
+              <tr>
+                <td className="px-0 py-3 font-mono text-sm border-b border-[var(--color-line)]" style={{ color: accentColor }}>value</td>
+                <td className="px-4 py-3 font-mono text-[var(--color-text-secondary)] border-b border-[var(--color-line)]">number</td>
+                <td className="px-4 py-3 font-mono text-[var(--color-text-muted)] border-b border-[var(--color-line)]">0</td>
+                <td className="px-4 py-3 text-[var(--color-text-secondary)] border-b border-[var(--color-line)]">Digit to display (0-9)</td>
               </tr>
-              <tr className="border-t border-[var(--color-line)]">
-                <td className="px-4 py-3 font-mono text-sm" style={{ color: accentColor }}>
-                  size
-                </td>
-                <td className="px-4 py-3 font-mono text-[var(--color-text-secondary)]">number</td>
-                <td className="px-4 py-3 text-[var(--color-text-secondary)]">
-                  Width in pixels. Height is automatically 1.5x width.
-                </td>
+              <tr>
+                <td className="px-0 py-3 font-mono text-sm border-b border-[var(--color-line)]" style={{ color: accentColor }}>size</td>
+                <td className="px-4 py-3 font-mono text-[var(--color-text-secondary)] border-b border-[var(--color-line)]">number</td>
+                <td className="px-4 py-3 font-mono text-[var(--color-text-muted)] border-b border-[var(--color-line)]">64</td>
+                <td className="px-4 py-3 text-[var(--color-text-secondary)] border-b border-[var(--color-line)]">Width in pixels. Height is 1.5x width.</td>
               </tr>
             </tbody>
           </table>
@@ -181,40 +155,18 @@ export function MyComponent() {
 
       <div className="rule mb-[var(--space-xl)]" />
 
-      {/* Dependencies */}
-      <section className="mb-[var(--space-xl)]">
-        <span className="bracket-label block mb-[var(--space-md)]">[ Dependencies ]</span>
-        <div className="flex flex-wrap gap-4">
-          <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">[ react &gt;=18 ]</span>
-          <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">[ framer-motion &gt;=10 ]</span>
-        </div>
-        <p className="text-[var(--color-text-secondary)] text-sm mt-3">
-          No Tailwind CSS required. Zero external dependencies beyond peer deps.
-        </p>
-      </section>
-
-      <div className="rule mb-[var(--space-xl)]" />
-
-      {/* Links */}
-      <section>
-        <span className="bracket-label block mb-[var(--space-md)]">[ Links ]</span>
-        <div className="flex flex-wrap gap-4">
-          <a
-            href="https://www.npmjs.com/package/animated-digit-transitions"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost"
+      {/* 06 — NEXT COMPONENT */}
+      <section className="mb-[var(--space-md)]">
+        <div className="flex items-center justify-between">
+          <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)] uppercase tracking-wider">
+            Next &#8594;
+          </span>
+          <Link
+            href={`/components/${nextComponent.slug}`}
+            className="text-[var(--text-lg)] text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors duration-150"
           >
-            npm Package
-          </a>
-          <a
-            href={`https://github.com/venkataramanab/animated-digit-transitions/blob/main/src/lib/digit-transitions/${fileName}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost"
-          >
-            View Source
-          </a>
+            {nextComponent.label}
+          </Link>
         </div>
       </section>
     </div>

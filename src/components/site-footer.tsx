@@ -13,7 +13,7 @@ export function SiteFooter() {
               [ raex ui ]
             </span>
             <p className="text-sm text-[var(--color-text-secondary)] mt-3 leading-relaxed">
-              Animated React components for interfaces that feel alive.
+              Experimenting with UI. Just not the usual kind.
             </p>
           </div>
 
@@ -34,27 +34,23 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Built with */}
+          {/* Credit */}
           <div>
-            <span className="bracket-label block mb-4">[ Built with ]</span>
-            <ul className="space-y-2.5 font-mono text-xs text-[var(--color-text-secondary)]">
-              <li>React 19</li>
-              <li>Framer Motion</li>
-              <li>Next.js</li>
-              <li>TypeScript</li>
-            </ul>
+            <a
+              href="https://www.linkedin.com/in/venkataramanab/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
+            >
+              Built by Venkataramana &#8599;
+            </a>
           </div>
         </div>
 
         <div className="rule mt-10 mb-6" />
-        <div className="flex items-center justify-between">
-          <span className="font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider">
-            &copy; {new Date().getFullYear()} raex
-          </span>
-          <span className="font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider">
-            MIT License
-          </span>
-        </div>
+        <span className="font-mono text-[var(--text-xxs)] text-[var(--color-text-muted)] uppercase tracking-wider">
+          MIT License &middot; 2026
+        </span>
       </div>
     </footer>
   );
