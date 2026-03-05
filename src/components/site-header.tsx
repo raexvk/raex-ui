@@ -6,9 +6,9 @@ export function SiteHeader() {
       <div className="container-main flex items-center justify-between h-14">
         <Link
           href="/"
-          className="font-mono text-sm tracking-wider text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
+          className="font-mono text-sm tracking-wider text-[#3ecf6e] hover:text-[#3ecf6e] transition-colors duration-150"
         >
-          [ raex ui ]
+          [RAEX]
         </Link>
         <nav className="flex items-center gap-8">
           <Link

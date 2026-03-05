@@ -9,8 +9,8 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
-            <span className="font-mono text-sm tracking-wider text-[var(--color-text-secondary)]">
-              [ raex ui ]
+            <span className="font-mono text-sm tracking-wider text-[#3ecf6e]">
+              [RAEX]
             </span>
             <p className="text-sm text-[var(--color-text-secondary)] mt-3 leading-relaxed">
               Experimenting with UI. Just not the usual kind.
