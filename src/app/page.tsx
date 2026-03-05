@@ -54,7 +54,7 @@ export default function Home() {
       {/* ═══ HERO ═══ */}
       <section className="min-h-screen flex flex-col justify-center pb-[var(--space-xl)]">
         <Reveal>
-          <span className="bracket-label">[ experimental ]</span>
+          <span className="bracket-label">[ not another ui lib ]</span>
         </Reveal>
 
         <Reveal delay={200}>
