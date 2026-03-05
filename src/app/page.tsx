@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <div className="container-main">
       {/* ═══ HERO ═══ */}
-      <section className="min-h-screen flex flex-col justify-center pb-[var(--space-xl)]">
+      <section className="min-h-screen flex flex-col justify-end pt-[20vh] pb-[var(--space-xl)]">
         <Reveal>
           <span className="bracket-label">[ design lab ]</span>
         </Reveal>
