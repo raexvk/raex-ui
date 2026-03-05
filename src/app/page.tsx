@@ -59,7 +59,7 @@ export default function Home() {
 
         <Reveal delay={200}>
           <h1
-            className="font-light tracking-[-0.03em] mt-6 mb-8 max-w-[900px]"
+            className="font-semibold tracking-[-0.03em] mt-6 mb-8 max-w-[900px]"
             style={{ fontSize: "var(--text-hero)" }}
           >
             I build UI components. Just not the usual kind.
