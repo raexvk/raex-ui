@@ -89,7 +89,7 @@ body {
 
 /* Bracket label — readable, not invisible */
 .bracket-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   letter-spacing: 0.08em;
@@ -223,4 +223,39 @@ pre::-webkit-scrollbar {
 
 pre::-webkit-scrollbar-thumb {
   background: var(--color-line-strong);
+}
+
+/* ---- REACT FLOW OVERRIDES ---- */
+
+.react-flow {
+  --xy-background-color: var(--color-bg);
+  --xy-node-border-radius: 0;
+}
+
+.react-flow__minimap {
+  background: var(--color-bg-subtle) !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--color-line) !important;
+}
+
+.react-flow__controls {
+  border-radius: 0 !important;
+  border: 1px solid var(--color-line) !important;
+  box-shadow: none !important;
+}
+
+.react-flow__controls-button {
+  background: var(--color-bg-subtle) !important;
+  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid var(--color-line) !important;
+  fill: var(--color-text-secondary) !important;
+}
+
+.react-flow__controls-button:hover {
+  background: var(--color-bg-hover) !important;
+}
+
+.react-flow__controls-button:last-child {
+  border-bottom: none !important;
 }
