@@ -79,12 +79,12 @@ export default function Home() {
               href="https://raexvk.framer.website/"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[var(--text-xs)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
+              className="font-mono text-[var(--text-xs)] text-[var(--color-text-primary)] hover:text-[var(--color-text-primary)] transition-colors duration-150 uppercase tracking-wider"
             >
-              built by Venkataramana &#8599;
+              BUILT BY VENKATARAMANA <svg className="inline-block ml-1 w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 9L9 3M9 3H4M9 3v5" /></svg>
             </a>
             <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">
-              v1.0.0 &middot; open source
+              open source
             </span>
           </div>
         </Reveal>
