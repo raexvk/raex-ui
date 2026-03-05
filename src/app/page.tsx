@@ -59,7 +59,7 @@ export default function Home() {
 
         <Reveal delay={200}>
           <h1
-            className="font-normal tracking-[-0.03em] mt-6 mb-8 max-w-[900px]"
+            className="font-normal tracking-[-0.03em] mt-6 mb-3 max-w-[900px]"
             style={{ fontSize: "var(--text-hero)" }}
           >
             I build UI components. Just not the usual kind.
@@ -68,7 +68,7 @@ export default function Home() {
 
         <Reveal delay={400}>
           <p className="text-[var(--color-text-secondary)] max-w-xl leading-[1.7] text-base mb-10">
-            raex UI is my space to experiment with UI components, some familiar, some new, but always a little different. Use it freely, and if you do, tag me. I&apos;d love to see what you build with it.
+            raex UI is my space to experiment with UI components, some familiar, some new, but always a little different.
           </p>
         </Reveal>
 
