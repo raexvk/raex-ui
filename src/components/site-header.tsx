@@ -8,7 +8,7 @@ export function SiteHeader() {
           href="/"
           className="font-mono text-sm tracking-wider text-[#3ecf6e] hover:text-[#3ecf6e] transition-colors duration-150"
         >
-          [RAEX]
+          RAEX UI
         </Link>
         <nav className="flex items-center gap-8">
           <Link

@@ -10,7 +10,7 @@ export function SiteFooter() {
           {/* Brand */}
           <div>
             <span className="font-mono text-sm tracking-wider text-[#3ecf6e]">
-              [RAEX]
+              RAEX UI
             </span>
             <p className="text-sm text-[var(--color-text-secondary)] mt-3 leading-relaxed">
               Experimenting with UI. Just not the usual kind.
