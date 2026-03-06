@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { DotGrid } from "@/components/dot-grid";
 import { LandingCards } from "@/components/landing-cards";
 
 function useReveal() {
@@ -53,9 +52,7 @@ export default function Home() {
   return (
     <div className="container-main">
       {/* ═══ HERO ═══ */}
-      <section className="relative min-h-screen flex flex-col pt-[20vh] pb-[var(--space-xl)]">
-        <DotGrid className="absolute inset-0 z-0" />
-        <div className="relative z-10 flex flex-col justify-end flex-1">
+      <section className="min-h-screen flex flex-col justify-end pt-[20vh] pb-[var(--space-xl)]">
         <Reveal>
           <span className="bracket-label">[ design lab ]</span>
         </Reveal>
@@ -82,16 +79,15 @@ export default function Home() {
               href="https://raexvk.framer.website/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--text-xs)] text-[var(--color-text-primary)] hover:text-[var(--color-text-primary)] transition-colors duration-150 tracking-wider"
+              className="font-mono text-[var(--text-xs)] text-[var(--color-text-primary)] hover:text-[var(--color-text-primary)] transition-colors duration-150 tracking-wider"
             >
               built by <span className="uppercase">VENKATARAMANA</span> <svg className="inline-block ml-0.5 w-[0.75em] h-[0.75em] align-middle" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 9L9 3M9 3H4M9 3v5" /></svg>
             </a>
-            <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-secondary)]">
-              OPEN SOURCE
+            <span className="font-mono text-[var(--text-xs)] text-[var(--color-text-muted)]">
+              open source
             </span>
           </div>
         </Reveal>
-        </div>
       </section>
 
       <div className="rule" />
